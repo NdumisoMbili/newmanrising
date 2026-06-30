@@ -823,6 +823,7 @@ nav.nav-collapsed #nav-links {
 .half-clock-card .glass-card { min-height: 320px; }
 
 /* Arc positions */
+@media (min-width: 769px) {
 .half-clock-card[data-position="0"] { left:11%; top:40%; transform:translate(-50%,-50%) rotateZ(-30deg) scale(0.86); z-index:8; }
 .half-clock-card[data-position="1"] { left:21%; top:30%; transform:translate(-50%,-50%) rotateZ(-22deg) scale(0.96); z-index:12; }
 .half-clock-card[data-position="2"] { left:34%; top:20%; transform:translate(-50%,-50%) rotateZ(-12deg) scale(1.02); z-index:16; }
@@ -830,51 +831,119 @@ nav.nav-collapsed #nav-links {
 .half-clock-card[data-position="4"] { left:66%; top:20%; transform:translate(-50%,-50%) rotateZ(12deg)  scale(1.02); z-index:16; }
 .half-clock-card[data-position="5"] { left:79%; top:30%; transform:translate(-50%,-50%) rotateZ(22deg)  scale(0.96); z-index:12; }
 .half-clock-card[data-position="6"] { left:89%; top:40%; transform:translate(-50%,-50%) rotateZ(30deg)  scale(0.86); z-index:8; }
+}
 
 @media (max-width: 1024px) {
   #radialCarousel { height: clamp(440px, 50vh, 520px); }
   .half-circle-base { width: min(320px, 74vw); height: min(320px, 74vw); }
   .half-clock-card { width: min(260px, 28vw); min-width: 180px; }
-  .half-clock-card[data-position="0"] { left:12%; top:40%; transform:translate(-50%,-50%) rotateZ(-30deg) scale(0.84); }
-  .half-clock-card[data-position="1"] { left:22%; top:30%; transform:translate(-50%,-50%) rotateZ(-22deg) scale(0.94); }
-  .half-clock-card[data-position="2"] { left:34%; top:22%; transform:translate(-50%,-50%) rotateZ(-12deg) scale(1.0); }
-  .half-clock-card[data-position="3"] { left:50%; top:13%; transform:translate(-50%,-50%) rotateZ(0deg)   scale(1.08); }
-  .half-clock-card[data-position="4"] { left:66%; top:22%; transform:translate(-50%,-50%) rotateZ(12deg)  scale(1.0); }
-  .half-clock-card[data-position="5"] { left:78%; top:30%; transform:translate(-50%,-50%) rotateZ(22deg)  scale(0.94); }
-  .half-clock-card[data-position="6"] { left:88%; top:40%; transform:translate(-50%,-50%) rotateZ(30deg)  scale(0.84); }
+  .half-clock-card[data-position="0"] { left:12%; top:40%; }
+  .half-clock-card[data-position="1"] { left:22%; top:30%; }
+  .half-clock-card[data-position="2"] { left:34%; top:22%; }
+  .half-clock-card[data-position="3"] { left:50%; top:13%; }
+  .half-clock-card[data-position="4"] { left:66%; top:22%; }
+  .half-clock-card[data-position="5"] { left:78%; top:30%; }
+  .half-clock-card[data-position="6"] { left:88%; top:40%; }
 }
 
 @media (max-width: 768px) {
-  #radialCarousel { align-items: flex-start; height: auto; padding: 0.75rem 0 1rem; }
-  .half-circle-base { display: none; }
+
+  /* ── Carousel ── */
+  #radialCarousel {
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .half-circle-base { display: none !important; }
+  .carousel-prev, .carousel-next { display: none !important; }
+
+  /* Reset arc absolute positioning entirely */
   .half-clock-container {
-    position: relative;
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0 1rem 1rem;
-    pointer-events: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    gap: 1rem !important;
+    padding: 0.5rem 1.25rem 1.5rem !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    pointer-events: auto !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    height: auto !important;
   }
   .half-clock-container::-webkit-scrollbar { display: none; }
-  .half-clock-card {
-    position: relative;
-    width: min(280px, 80vw);
-    max-width: 280px;
-    min-width: 240px;
-    top: auto; left: auto;
-    transform: none;
-    opacity: 1;
-    flex: 0 0 auto;
-    scroll-snap-align: center;
+
+  /* Each card: flat, upright, scrollable */
+  .half-clock-card,
+  .half-clock-card[data-position="0"],
+  .half-clock-card[data-position="1"],
+  .half-clock-card[data-position="2"],
+  .half-clock-card[data-position="3"],
+  .half-clock-card[data-position="4"],
+  .half-clock-card[data-position="5"],
+  .half-clock-card[data-position="6"] {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    rotate: unset !important;
+    opacity: 1 !important;
+    flex: 0 0 78vw !important;
+    width: 78vw !important;
+    min-width: unset !important;
+    max-width: 320px !important;
+    height: auto !important;
+    z-index: auto !important;
+    scroll-snap-align: start !important;
   }
-  .half-clock-card .glass-card { min-height: auto; }
-  .carousel-prev, .carousel-next { display: none; }
+
+  .half-clock-card .glass-card,
+  .half-clock-card.featured .glass-card {
+    min-height: 200px !important;
+    height: auto !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Always show descriptions — no hover on mobile */
+  .half-clock-card .opacity-0 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  /* ── Stats: 2×2 grid ── */
+  .hero-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    border-radius: 1.25rem !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+    flex-wrap: unset !important;
+  }
+  .hero-stat-divider { display: none !important; }
+  .hero-stat {
+    padding: 1.1rem 0.75rem !important;
+    border-right: 1px solid rgba(255,255,255,0.07) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  }
+  .hero-stat:nth-child(even) { border-right: none !important; }
+  .hero-stat:nth-child(n+4) { border-bottom: none !important; }
+  .hero-stat-num { font-size: 1.6rem !important; }
+  .hero-stat-label {
+    font-size: 8px !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -2351,15 +2420,6 @@ footer a:not(.btn-primary):hover {
   }
   .hero-title-line-2  { font-size: clamp(46px, 13.5vw, 82px); }
   .hero-ghost-word    { font-size: clamp(80px, 26vw, 130px); }
-  .hero-stats         {
-    gap: 0;
-    padding: 12px 16px;
-    border-radius: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-stat { padding: 6px 12px; }
-  .hero-stat-divider:nth-child(4) { display: none; }  /* hide last divider when wrapping */
   .hero-sub { font-size: 15px; }
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-cta-primary,
@@ -2374,16 +2434,6 @@ footer a:not(.btn-primary):hover {
   .hero-eyebrow       { gap: 10px; }
   .hero-eyebrow-line  { width: 20px; }
   .hero-tagline-rule  { max-width: 40px; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    grid-template-rows: auto auto;
-    border-radius: 16px;
-    padding: 14px 12px;
-  }
-  .hero-stat-divider:nth-child(6) { grid-row: 1 / 3; }
-  .hero-stat-divider:nth-child(4),
-  .hero-stat-divider:nth-child(8) { display: none; }
 }
 
 /* ─── Pillars of Legacy — Section Title ─── */
@@ -2446,48 +2496,261 @@ footer a:not(.btn-primary):hover {
   .pillars-title-main  { font-size: clamp(26px, 8vw, 52px); -webkit-text-stroke-width: 1.5px; }
   .pillars-title-the   { font-size: 11px; letter-spacing: 0.28em; }
 }
-/* ═══════════════════════════════════════════════════════════
-   TITLE HIERARCHY SYSTEM
-   ═══════════════════════════════════════════════════════════
-   L0  Hero H1      — full-bleed, per-page unique styles
-   L1  Section flag — big statement, clamp(36px,6vw,76px)
-   L2  Section head — standard section title, clamp(26px,3.5vw,48px)
-   L3  Card title   — font-headline-md text-2xl (unchanged)
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   VISIONARIES — PILL PORTRAIT GRID
+   ═══════════════════════════════════════════ */
 
-/* ── L1: Section Flagship Title ─────────────────────────────
-   Used for single large statement titles mid-page.
-   Slightly below hero (max 76px vs hero's 128px max).
-   Syne 800, tight tracking, uppercase.                      */
-.section-title-l1 {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(32px, 5.5vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: var(--color-on-surface);
+.pill-team-grid {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: nowrap;
+  margin-bottom: 4rem;
+  padding: 0 0.5rem;
 }
 
-/* ── L2: Section Supporting Title ───────────────────────────
-   The most common section header — sits below an eyebrow.
-   Visible hierarchy step below L1.                         */
+.pill-card {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 9 / 17.5;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--pill-bg, #1c1c1d);
+  flex: 1 1 0;
+  transition: transform 0.5s var(--ease-spring), box-shadow 0.5s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* Stagger heights like the reference — alternating taller/shorter */
+.pill-card:nth-child(odd)  { align-self: flex-start; }
+.pill-card:nth-child(even) { align-self: flex-end; margin-bottom: -1.5rem; }
+
+.pill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45), 0 0 40px rgba(242,202,80,0.08);
+}
+
+.pill-photo-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68%;
+  overflow: hidden;
+}
+
+.pill-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+.pill-card:hover .pill-photo {
+  filter: grayscale(0) contrast(1.05);
+  transform: scale(1.04);
+}
+
+.pill-text {
+  position: absolute;
+  top: 3.25rem;
+  left: 1.75rem;
+  right: 1.75rem;
+  z-index: 2;
+}
+
+.pill-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(11px, 1.25vw, 14px);
+  line-height: 1.35;
+  color: var(--gold-1);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 6px;
+  word-break: break-word;
+}
+
+.pill-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: rgba(245,245,220,0.6);
+  margin: 0;
+  white-space: normal;
+}
+
+/* Gold-background card needs dark text for contrast */
+.pill-text-dark .pill-name { color: #2a1a00; }
+.pill-text-dark .pill-role { color: rgba(42,26,0,0.7); }
+
+/* ── Bios grid below pills ── */
+.pill-bios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 2.5rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.pill-bio-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--color-on-surface);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill-bio-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,202,80,0.7);
+  background: rgba(242,202,80,0.08);
+  border: 1px solid rgba(242,202,80,0.18);
+  border-radius: 100px;
+  padding: 3px 10px;
+}
+
+.pill-bio-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-on-surface-variant);
+}
+
+/* ═══════════════════════════════════════════
+   PILL TEAM GRID — MOBILE RESPONSIVENESS
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .pill-team-grid {
+    flex-wrap: wrap;
+    row-gap: 2rem;
+  }
+  .pill-card {
+    max-width: 200px;
+    flex: 0 0 calc(50% - 0.625rem);
+  }
+  .pill-card:nth-child(odd),
+  .pill-card:nth-child(even) {
+    align-self: flex-start;
+    margin-bottom: 0;
+  }
+  .pill-bios { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  .pill-team-grid {
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+  .pill-card {
+    flex: 0 0 calc(50% - 0.4rem);
+    max-width: none;
+    aspect-ratio: 3 / 4.4;
+  }
+  .pill-name { font-size: 10.5px; }
+  .pill-role { font-size: 8.5px; }
+  .pill-text { top: 2.2rem; left: 1.25rem; right: 1.25rem; }
+  .pill-photo-wrap { height: 64%; }
+  .pill-bio-text { font-size: 0.825rem; }
+}
+
+
+/* ═══════════════════════════════════════════
+   SECTION TITLE HIERARCHY — Home reference scale
+   ═══════════════════════════════════════════ */
+
 .section-title-l2 {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: clamp(24px, 3.2vw, 44px);
+  font-size: clamp(28px, 4.2vw, 48px);
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
   color: var(--color-on-surface);
 }
 
-/* Mobile overrides */
 @media (max-width: 768px) {
-  .section-title-l1 { font-size: clamp(28px, 8vw, 52px); }
-  .section-title-l2 { font-size: clamp(22px, 6.5vw, 36px); }
-}
-@media (max-width: 480px) {
-  .section-title-l1 { font-size: clamp(24px, 9vw, 40px); }
-  .section-title-l2 { font-size: clamp(20px, 7vw, 30px); }
+  .section-title-l2 { font-size: clamp(24px, 7vw, 34px); }
 }
 
+/* ── About page: same family/weight, smaller scale ── */
+.about-page .section-title-l2,
+body.page-about .section-title-l2 {
+  font-size: clamp(22px, 3.2vw, 36px);
+}
+
+@media (max-width: 768px) {
+  .about-page .section-title-l2,
+  body.page-about .section-title-l2 {
+    font-size: clamp(20px, 5.5vw, 26px);
+  }
+}
+/* ═══════════════════════════════════════════
+   PAGE HERO TITLES — Programs / Events / Contact
+   Same family as home hero, smaller scale
+   ═══════════════════════════════════════════ */
+
+.page-hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Outline / stroke word — same treatment as "NEW MAN" on home */
+.page-hero-outline {
+  display: block;
+  font-size: clamp(38px, 7vw, 88px);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+}
+
+/* Gold filled word — same treatment as "RISING" on home */
+.page-hero-gold {
+  display: block;
+  font-size: clamp(44px, 8.5vw, 108px);
+  background: linear-gradient(160deg, #ffe088 0%, #f2ca50 35%, #d4af37 65%, #f2ca50 85%, #ffe088 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 5s ease-in-out infinite;
+}
+
+/* Breathing dot */
+.page-hero-dot {
+  display: inline-block;
+  font-size: 0.65em;
+  line-height: 1.3;
+  align-self: flex-end;
+  -webkit-text-fill-color: var(--gold-2);
+  color: var(--gold-2);
+  text-shadow: 0 0 30px rgba(242, 202, 80, 0.6);
+  animation: dotBreathe 3s ease-in-out infinite;
+  margin-bottom: 0.08em;
+}
+
+@media (max-width: 768px) {
+  .page-hero-outline { font-size: clamp(30px, 10vw, 56px); -webkit-text-stroke-width: 1.25px; }
+  .page-hero-gold    { font-size: clamp(34px, 11.5vw, 64px); }
+}
+
+@media (max-width: 480px) {
+  .page-hero-outline { font-size: clamp(26px, 11vw, 44px); }
+  .page-hero-gold    { font-size: clamp(30px, 12.5vw, 52px); }
+}
