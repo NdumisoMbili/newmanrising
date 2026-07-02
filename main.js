@@ -14,6 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── Reduced motion preference ─────────────────────────────────────────────
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ─── Home-page splash + header reveal ─────────────────────────────────────
+  const splashScreen = document.getElementById('splash-screen');
+  const mainNav = document.getElementById('main-nav');
+  const isHomePage = document.body.classList.contains('page-home');
+
+  if (isHomePage && splashScreen && mainNav) {
+    const revealSite = () => {
+      splashScreen.classList.add('is-hidden');
+      mainNav.classList.add('nav-expanding');
+      mainNav.classList.remove('nav-startup-state');
+      mainNav.style.pointerEvents = 'auto';
+      setTimeout(() => splashScreen.remove(), 850);
+    };
+
+    if (prefersReducedMotion) {
+      revealSite();
+    } else {
+      setTimeout(revealSite, 1100);
+    }
+  }
+
   // ─── Scroll Progress Bar ───────────────────────────────────────────────────
   const progressBar = document.createElement('div');
   progressBar.id = 'scroll-progress';
@@ -462,8 +483,10 @@ document.addEventListener('DOMContentLoaded', () => {
       cards.forEach((card, i) => {
         const pos = (i + norm) % total;
         card.setAttribute('data-position', pos);
-        card.classList.toggle('featured', pos === 3);
-        card.setAttribute('aria-selected', pos === 3 ? 'true' : 'false');
+        
+        const isCenter = total === 5 ? (pos === 2) : (pos === 3);
+        card.classList.toggle('featured', isCenter);
+        card.setAttribute('aria-selected', isCenter ? 'true' : 'false');
       });
     };
 
@@ -474,7 +497,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('role', 'option');
       card.addEventListener('click', e => {
         if (e.target.closest('a')) return;
-        offset = (3 - i + total) % total;
+        const centerPos = total === 5 ? 2 : 3;
+        offset = (centerPos - i + total) % total;
         rotate(offset);
       });
     });
@@ -497,5 +521,42 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.classList.add('active');
     });
   });
+
+  // ─── Coming Soon Modal ────────────────────────────────────────────────────
+  const csModal = document.getElementById('coming-soon-modal');
+  if (csModal) {
+    const csClose   = csModal.querySelector('.cs-modal-close');
+    const csDismiss = csModal.querySelector('.cs-modal-dismiss');
+    let csLast = null;
+
+    const openCS = (e) => {
+      e.preventDefault();
+      csLast = document.activeElement;
+      csModal.removeAttribute('hidden');
+      csModal.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(() => csModal.classList.add('cs-modal-open'));
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => csClose?.focus(), 50);
+    };
+
+    const closeCS = () => {
+      csModal.classList.remove('cs-modal-open');
+      csModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => csModal.setAttribute('hidden', ''), 300);
+      csLast?.focus();
+    };
+
+    // Event delegation to catch dynamically added elements
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-coming-soon]');
+      if (btn) openCS(e);
+    });
+
+    csClose?.addEventListener('click', closeCS);
+    csDismiss?.addEventListener('click', closeCS);
+    csModal.addEventListener('click', e => { if (e.target === csModal) closeCS(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && csModal.classList.contains('cs-modal-open')) closeCS(); });
+  }
 
 });

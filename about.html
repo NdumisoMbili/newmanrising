@@ -28,8 +28,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script src="tw-config.js?v=1.2"></script>
-<link rel="stylesheet" href="styles.css?v=1.1" />
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary page-about">
@@ -49,10 +49,10 @@
       <a class="nav-link " href="contact.html">Contacts</a>
     </div>
     <div class="flex items-center gap-3">
-      <a href="https://new-man-rising.vercel.app/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex btn-primary text-[11px] px-4 py-2.5 whitespace-nowrap">Join the Movement</a>
+      <a href="#" data-coming-soon="true" class="hidden md:inline-flex btn-primary text-[11px] px-4 py-2.5 whitespace-nowrap">Join the Movement</a>
       <button id="mobile-menu-btn" class="md:hidden text-primary p-1" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span class="material-symbols-outlined text-3xl">menu</span>
-      </button> 
+      </button>
     </div>
   </nav>
 
@@ -65,7 +65,7 @@
     <a class="text-2xl font-headline-md text-on-surface hover:text-primary transition-colors no-underline" href="programs.html">Programs</a>
     <a class="text-2xl font-headline-md text-on-surface hover:text-primary transition-colors no-underline" href="events.html">Events</a>
     <a class="text-2xl font-headline-md text-on-surface hover:text-primary transition-colors no-underline" href="contact.html">Contacts</a>
-    <a href="https://new-man-rising.vercel.app/" target="_blank" rel="noopener noreferrer" class="mt-4 btn-primary">Join the Movement</a>
+    <a href="#" data-coming-soon="true" class="mt-4 btn-primary">Join the Movement</a>
   </div>
 
   <main id="main-content" class="relative z-10">
@@ -79,7 +79,10 @@
       </div>
       <div class="relative z-10 max-w-6xl mx-auto reveal-blur">
         <span class="font-label-caps text-label-caps text-primary tracking-[0.4em] block mb-4 reveal-fade">ABOUT</span>
-        <h1 class="font-display-lg text-[56px] md:text-[80px] leading-tight uppercase mb-8 text-white reveal-slide-up">Who We Are</h1>
+        <h1 class="page-hero-title mb-8 reveal-slide-up" aria-label="Who We Are">
+          <span class="page-hero-outline">Who We</span>
+          <span class="page-hero-gold">Are.</span>
+        </h1>
         <p class="text-white/80 font-body-lg text-xl max-w-3xl mx-auto mb-16 reveal-fade">
           New Man Rising exists to build grounded, disciplined, purpose-driven young men through mentorship, brotherhood, faith, and leadership development.
         </p>
@@ -271,11 +274,11 @@ The movement is alive, running workshops, mentorship and conversations that resh
           <p class="pill-bio-text">A seasoned executive bridging banking and ICT, Sthembiso held leadership roles at African Bank for 14 years — rising from Sales Production Manager to Regional Operations Manager. He later served as CEO of Umcebo Wezezwe before co-founding Social Mobile, where he continues as CEO. Educated in Management, Leadership and Business at Milpark and Regenesys Business Schools and currently studying Industrial Engineering at UNISA, he brings sharp financial intelligence and proven business acumen to New Man Rising — ensuring every initiative is built on solid ground.</p>
         </div>
         <div class="pill-bio">
-          <p class="pill-bio-name">Bishop Gwala <span class="pill-bio-tag">Spiritual Covering</span></p>
-          <p class="pill-bio-text">A respected spiritual leader who anchors New Man Rising in faith and ancestral wisdom, Bishop Gwala provides the covering and counsel that grounds every program in purpose beyond the practical, guiding men toward character built on conviction.</p>
+          <p class="pill-bio-name">Bishop Gwala <span class="pill-bio-tag">Spiritual Leader</span></p>
+          <p class="pill-bio-text">Prof. TD Gwala is a South African entrepreneur, CEO, and pastor from Umlazi township, KwaZulu-Natal. He founded multiple organizations including Ithembalethu Media, EtMt Events Management, HZ Commerce (PTY) LTD, and the National Interfaith Achievement Awards (NIFA). He also organizes national events like Zion TV and serves as a member of the Commission of Religious Affairs and the KZN Legislature Faith Based Organization. His work focuses on nation-building and fighting against women's abuse, crime, corruption, and poverty. He is recognized as both a community and spiritual leader.</p>
         </div>
         <div class="pill-bio">
-          <p class="pill-bio-name">Nkosi Nxumalo <span class="pill-bio-tag">Brotherhood Lead</span></p>
+          <p class="pill-bio-name">Nkosi Nxumalo <span class="pill-bio-tag">CoFounder/Creative/Communications</span></p>
           <p class="pill-bio-text">An actor, writer, director and model from Umlazi, Durban, trained at Ikabawo Performing Arts Academy. Known for his appearances in SABC's "Uzalo" and stage work at The Playhouse, Nkosi brings discipline and storytelling craft to coordinating New Man Rising's programs and brotherhood circles on the ground.</p>
         </div>
       </div>
@@ -295,6 +298,51 @@ The movement is alive, running workshops, mentorship and conversations that resh
         <blockquote class="border-l-4 border-primary pl-6 py-2 my-8 text-left italic text-xl md:text-2xl font-headline-md text-on-surface">
           "A boy becomes a man not when he can dominate others, but when he can master himself to serve them."
         </blockquote>
+      </div>
+    </section>
+
+    <!-- ── Partners ── -->
+    <section class="partners-section reveal" aria-labelledby="partners-title">
+      <div class="partners-banner">
+        <div class="partners-banner-overlay"></div>
+        <div class="partners-banner-content">
+          <span class="partners-hashtag">#STRONGER TOGETHER</span>
+          <h2 id="partners-title" class="page-hero-title">
+            <span class="page-hero-outline">Powered by</span>
+            <span class="page-hero-gold">Our Partners</span><span class="page-hero-dot">.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="partners-body">
+        <p class="partners-tagline">Together we rebuild the role of the man in our communities.</p>
+
+        <div class="partners-grid">
+          <div class="partner-card reveal-zoom-in">
+            <img src="assets/partner-ignite.jpeg" alt="Ignite The Mind Academy" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">Ignite The Mind</span>
+          </div>
+          <div class="partner-card reveal-zoom-in reveal-delay-1">
+            <img src="assets/partner-ethekwini.jpeg" alt="eThekwini Municipality" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">eThekwini Municipality</span>
+          </div>
+          <div class="partner-card reveal-zoom-in reveal-delay-2">
+            <img src="assets/partner-africanbank.png" alt="African Bank" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">African Bank</span>
+          </div>
+          <div class="partner-card reveal-zoom-in reveal-delay-3">
+            <img src="assets/partner-saps.png" alt="SAPS — Men for Change" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">SAPS Men for Change</span>
+          </div>
+          <div class="partner-card reveal-zoom-in reveal-delay-4">
+            <img src="assets/partner-africom.jpeg" alt="AFRICOM Foundation" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">AFRICOM Foundation</span>
+          </div>
+          <div class="partner-card reveal-zoom-in reveal-delay-5">
+            <img src="assets/partner-umusa.jpeg" alt="UMusa Media" class="partner-logo" loading="lazy" />
+            <span class="partner-card-name">UMusa Media</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -328,7 +376,7 @@ The movement is alive, running workshops, mentorship and conversations that resh
           <div class="flex flex-col gap-3">
             <a href="mailto:info@newmanrising.co.za" class="text-on-surface-variant hover:text-primary transition-colors no-underline text-sm">masoja@igniteacademy.co.za</a>
             <p class="text-on-surface-variant text-sm">South Africa</p>
-            <a href="https://new-man-rising.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary text-[11px] px-5 py-2.5 w-fit mt-2">Join the Movement</a>
+            <a href="#" data-coming-soon="true" class="btn-primary text-[11px] px-5 py-2.5 w-fit mt-2">Join the Movement</a>
           </div>
         </div>
       </div>
@@ -341,5 +389,24 @@ The movement is alive, running workshops, mentorship and conversations that resh
   </footer>
 
   <script src="main.js"></script>
+
+  <!-- ── Coming Soon Modal ── -->
+  <div id="coming-soon-modal" class="cs-modal-overlay" hidden aria-hidden="true">
+    <div class="cs-modal" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title">
+      <button type="button" class="cs-modal-close" aria-label="Close">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+      <div class="cs-modal-icon">
+        <span class="material-symbols-outlined" aria-hidden="true">hourglass_top</span>
+      </div>
+      <span class="cs-modal-eyebrow">Almost There</span>
+      <h2 id="cs-modal-title" class="cs-modal-title">Coming Soon</h2>
+      <p class="cs-modal-text">The full member portal is being forged. Reach out directly and we will personally walk you through next steps.</p>
+      <div class="cs-modal-actions">
+        <a href="contact.html" class="btn-primary cs-modal-btn">Contact Us</a>
+        <button type="button" class="btn-outline cs-modal-btn cs-modal-dismiss">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
