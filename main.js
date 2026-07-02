@@ -21,11 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (isHomePage && splashScreen && mainNav) {
     let splashRevealed = false;
+    const progressRing = splashScreen.querySelector('.splash-progress-ring');
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const effectiveType = connection?.effectiveType || '4g';
+    const speedMap = {
+      'slow-2g': 2200,
+      '2g': 1800,
+      '3g': 1200,
+      '4g': 900,
+      default: 1000
+    };
+    const duration = speedMap[effectiveType] || speedMap.default;
+    const startTime = performance.now();
+
+    const setProgress = (value) => {
+      const clamped = Math.max(0, Math.min(100, value));
+      if (progressRing) progressRing.style.setProperty('--splash-progress', `${clamped}`);
+    };
 
     const revealSite = () => {
       if (splashRevealed) return;
       splashRevealed = true;
 
+      setProgress(100);
       splashScreen.classList.add('is-hidden');
       mainNav.classList.add('nav-expanding');
       mainNav.classList.remove('nav-startup-state');
@@ -36,12 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 700);
     };
 
+    const animateSplash = () => {
+      if (splashRevealed) return;
+
+      const elapsed = performance.now() - startTime;
+      const eased = 1 - Math.pow(1 - Math.min(1, elapsed / duration), 3);
+      const nextProgress = Math.min(94, eased * 100);
+      setProgress(nextProgress);
+
+      if (elapsed < duration) {
+        window.requestAnimationFrame(animateSplash);
+      } else {
+        revealSite();
+      }
+    };
+
     if (prefersReducedMotion) {
       revealSite();
     } else {
-      window.setTimeout(revealSite, 1100);
-      window.setTimeout(revealSite, 2600);
+      window.requestAnimationFrame(animateSplash);
       window.addEventListener('load', revealSite, { once: true });
+      window.setTimeout(revealSite, duration + 500);
     }
   }
 

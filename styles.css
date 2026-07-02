@@ -3241,6 +3241,17 @@ body.page-about .section-title-l2 {
   animation: splashEnter 900ms var(--ease-spring) both;
 }
 
+.splash-progress-ring {
+  position: absolute;
+  inset: -0.9rem;
+  border-radius: 999px;
+  background: conic-gradient(from -90deg, var(--gold-2) calc(var(--splash-progress, 0) * 1%), rgba(242,202,80,0.12) calc(var(--splash-progress, 0) * 1%));
+  mask: radial-gradient(circle, transparent 58%, black 59%);
+  -webkit-mask: radial-gradient(circle, transparent 58%, black 59%);
+  transition: background 180ms linear;
+  filter: drop-shadow(0 0 18px rgba(242,202,80,0.2));
+}
+
 .splash-ring {
   position: absolute;
   inset: 0;
