@@ -2753,6 +2753,26 @@ body.page-about .section-title-l2 {
   .page-hero-gold    { font-size: clamp(30px, 12.5vw, 52px); }
 }
 
+.events-hero {
+  isolation: isolate;
+}
+
+@media (max-width: 768px) {
+  .events-hero {
+    min-height: 100svh;
+    padding-top: 7rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .events-hero .page-hero-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .events-hero .section-divider {
+    margin-top: 0;
+  }
+}
+
 
 /* ═══════════════════════════════════════════
    PARTNERS SECTION
