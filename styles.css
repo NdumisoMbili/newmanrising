@@ -2760,12 +2760,16 @@ body.page-about .section-title-l2 {
 @media (max-width: 768px) {
   .events-hero {
     min-height: 100svh;
-    padding-top: 6.5rem;
-    padding-bottom: 1.5rem;
+    /* reduce top padding so nav doesn't overlap and allow content to breathe */
+    padding-top: calc(3.5rem + env(safe-area-inset-top));
+    padding-bottom: 1.25rem;
   }
 
   .events-hero .page-hero-title {
     margin-bottom: 0.85rem;
+    max-width: 92%;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .events-hero .section-divider {
@@ -2776,18 +2780,41 @@ body.page-about .section-title-l2 {
 
 @media (max-width: 480px) {
   .events-hero {
-    padding-top: 5.75rem;
-    padding-bottom: 1rem;
+    /* make the hero more compact on small handsets */
+    padding-top: calc(3.25rem + env(safe-area-inset-top));
+    padding-bottom: 0.9rem;
+    min-height: calc(100svh - 3.5rem);
   }
 
   .events-hero .page-hero-title {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.45rem;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    max-width: 95%;
+  }
+
+  .page-hero-outline {
+    font-size: clamp(18px, 8vw, 34px);
+    -webkit-text-stroke-width: 0.95px;
+    margin-bottom: 0.2rem;
+  }
+
+  .page-hero-gold {
+    font-size: clamp(20px, 10vw, 38px);
+    letter-spacing: -0.04em;
+    line-height: 1.02;
   }
 
   .events-hero .section-divider {
     display: none;
   }
 }
+
+/* Ensure the hero background focuses on the top area on mobile */
+.events-hero img[data-parallax] { object-position: center top; }
+
+/* Make sure gold word wraps normally on small screens */
+.events-hero .page-hero-gold { white-space: normal; display: block; }
 
 
 /* ═══════════════════════════════════════════
