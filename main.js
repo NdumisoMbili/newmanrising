@@ -20,18 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const isHomePage = document.body.classList.contains('page-home');
 
   if (isHomePage && splashScreen && mainNav) {
+    let splashRevealed = false;
+
     const revealSite = () => {
+      if (splashRevealed) return;
+      splashRevealed = true;
+
       splashScreen.classList.add('is-hidden');
       mainNav.classList.add('nav-expanding');
       mainNav.classList.remove('nav-startup-state');
       mainNav.style.pointerEvents = 'auto';
-      setTimeout(() => splashScreen.remove(), 850);
+
+      window.setTimeout(() => {
+        splashScreen.remove();
+      }, 700);
     };
 
     if (prefersReducedMotion) {
       revealSite();
     } else {
-      setTimeout(revealSite, 1100);
+      window.setTimeout(revealSite, 1100);
+      window.setTimeout(revealSite, 2600);
+      window.addEventListener('load', revealSite, { once: true });
     }
   }
 
@@ -119,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav         = document.querySelector('nav');
   const navLinks    = document.getElementById('nav-links');
   const yearEl      = document.getElementById('current-year');
+  const parallaxEls = prefersReducedMotion ? [] : Array.from(document.querySelectorAll('[data-parallax]'));
   let lastScrollY   = window.scrollY;
   let ticking       = false;
 
@@ -170,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
   onScroll();
 
   // ─── Parallax elements ─────────────────────────────────────────────────────
-  const parallaxEls = prefersReducedMotion ? [] : Array.from(document.querySelectorAll('[data-parallax]'));
 
   // ─── Mobile Menu ───────────────────────────────────────────────────────────
   const menuBtn    = document.getElementById('mobile-menu-btn');
