@@ -2760,16 +2760,32 @@ body.page-about .section-title-l2 {
 @media (max-width: 768px) {
   .events-hero {
     min-height: 100svh;
-    padding-top: 7rem;
-    padding-bottom: 2.5rem;
+    padding-top: 6.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .events-hero .page-hero-title {
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.85rem;
   }
 
   .events-hero .section-divider {
     margin-top: 0;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .events-hero {
+    padding-top: 5.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .events-hero .page-hero-title {
+    margin-bottom: 0.6rem;
+  }
+
+  .events-hero .section-divider {
+    display: none;
   }
 }
 
