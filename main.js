@@ -403,20 +403,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const cdHours = document.getElementById('cd-hours');
   const cdMins  = document.getElementById('cd-mins');
   const cdSecs  = document.getElementById('cd-secs');
+  const countdownDisplay = document.getElementById('countdown-display');
+  const countdownEmptyState = document.getElementById('countdown-empty-state');
+  const countdownDetails = document.getElementById('countdown-details');
 
   if (cdDays) {
     const launchUTC = Date.UTC(2026, 5, 18, 22, 0, 0); // June 19 00:00 SAST (UTC+2)
+
+    const showNoEventNotice = () => {
+      if (countdownDisplay) countdownDisplay.classList.add('hidden');
+      if (countdownEmptyState) countdownEmptyState.classList.remove('hidden');
+      if (countdownDetails) countdownDetails.classList.add('hidden');
+
+      const section = countdownDisplay?.closest('section');
+      if (section) {
+        const heading = section.querySelector('h2');
+        if (heading) heading.textContent = 'No Upcoming Event Soon';
+      }
+    };
 
     const tickCountdown = () => {
       const now  = Date.now();
       const diff = launchUTC - now;
 
       if (diff <= 0) {
-        cdDays.textContent = cdHours.textContent = cdMins.textContent = cdSecs.textContent = '00';
-        const section = document.getElementById('countdown-display')?.closest('section');
-        if (section) {
-          section.querySelector('h2').textContent = 'The Movement Is Live. Rise!';
-        }
+        showNoEventNotice();
         return;
       }
 
