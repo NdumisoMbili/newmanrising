@@ -121,6 +121,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-on-background);
   overflow-x: hidden;
+  overflow-y: auto;
   font-family: 'Hanken Grotesk', sans-serif;
   margin: 0;
   /* Subtle noise texture over the background */
@@ -157,6 +158,11 @@ body.page-about .grid-overlay {
   background-image:
     radial-gradient(circle at 1px 1px, rgba(212, 175, 55, 0.05) 1px, transparent 0);
   background-size: 36px 36px;
+}
+
+body.page-home {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* ═══════════════════════════════════════════
