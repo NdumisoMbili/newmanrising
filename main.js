@@ -14,10 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── Reduced motion preference ─────────────────────────────────────────────
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ─── Home-page splash + header reveal ─────────────────────────────────────
+  // ─── Header state + home-page splash reveal ─────────────────────────────
   const splashScreen = document.getElementById('splash-screen');
   const mainNav = document.getElementById('main-nav');
   const isHomePage = document.body.classList.contains('page-home');
+
+  if (mainNav) {
+    const shouldRevealImmediately = !isHomePage || !splashScreen;
+    if (shouldRevealImmediately) {
+      mainNav.classList.add('nav-expanding');
+      mainNav.classList.remove('nav-startup-state');
+      mainNav.style.pointerEvents = 'auto';
+      mainNav.style.maxWidth = '56rem';
+      mainNav.style.paddingRight = '1.5rem';
+    }
+  }
 
   if (isHomePage && splashScreen && mainNav) {
     let splashRevealed = false;

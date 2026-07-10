@@ -36,7 +36,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
-  <nav class="fixed top-4 inset-x-4 z-50 mx-auto max-w-4xl rounded-full bg-surface/80 backdrop-blur-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.18)] px-5 md:px-6 py-3 flex items-center justify-between gap-4">
+  <nav id="main-nav" class="nav-expanding fixed top-3 inset-x-3 md:top-4 md:inset-x-4 z-50 mx-auto max-w-4xl rounded-full bg-surface/80 backdrop-blur-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.18)] px-4 md:px-6 py-3 flex items-center justify-between gap-4">
     <a href="index.html" class="flex items-center gap-3 no-underline">
   <img src="assets/logo.jpeg" alt="New Man Rising" class="h-12 w-12 object-contain rounded-full" style="mix-blend-mode:screen" width="48" height="48" />
   <span class="hidden md:block text-sm uppercase tracking-[0.35em] font-semibold text-on-surface opacity-80">New Man Rising</span>
@@ -70,9 +70,9 @@
 
   <main id="main-content" class="relative z-10">
     <!-- Page Hero -->
-    <section class="relative h-screen px-5 md:px-16 flex flex-col items-center justify-center text-center overflow-hidden">
+    <section class="relative h-screen px-5 md:px-16 flex flex-col items-center justify-center text-center overflow-hidden glow-gold">
       <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover" data-parallax="0.3" alt="Men standing together with purpose and strength" width="1920" height="1080" src="https://images.unsplash.com/photo-1550761717-d03b44d9cb33?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        <img class="w-full h-full object-cover" data-parallax="0.3" alt="Men standing together with purpose and strength" width="1920" height="1080" src="https://images.unsplash.com/photo-1550761717-d03b44d9cb33?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="eager" decoding="async" fetchpriority="high" />
         <div class="absolute inset-0 hero-gradient"></div>
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
@@ -92,7 +92,7 @@
 
     <!-- Mission & Vision -->
     <section class="py-16 px-5 md:px-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div class="glass-card p-10 md:p-14 rounded-3xl reveal-left">
+      <div class="glass-card p-10 md:p-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] reveal-left">
         <span class="material-symbols-outlined text-primary text-5xl mb-6" style="font-variation-settings: 'FILL' 1;">target</span>
         <h2 class="section-title-l2 mb-6 uppercase">Our Mission</h2>
         <div class="text-on-surface-variant space-y-4 text-lg">
@@ -100,7 +100,7 @@
           <p>We are actively building the blueprint for masculinity that honors the past while forging a strong, unbreakable future.</p>
         </div>
       </div>
-      <div class="glass-card p-10 md:p-14 rounded-3xl reveal-right">
+      <div class="glass-card p-10 md:p-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] reveal-right">
         <span class="material-symbols-outlined text-primary text-5xl mb-6" style="font-variation-settings: 'FILL' 1;">visibility</span>
         <h2 class="section-title-l2 mb-6 uppercase">Our Vision</h2>
         <div class="text-on-surface-variant space-y-4 text-lg">

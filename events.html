@@ -36,7 +36,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
-  <nav class="fixed top-4 inset-x-4 z-50 mx-auto max-w-4xl rounded-full bg-surface/80 backdrop-blur-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.18)] px-5 md:px-6 py-3 flex items-center justify-between gap-4">
+  <nav id="main-nav" class="nav-expanding fixed top-3 inset-x-3 md:top-4 md:inset-x-4 z-50 mx-auto max-w-4xl rounded-full bg-surface/80 backdrop-blur-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.18)] px-4 md:px-6 py-3 flex items-center justify-between gap-4">
     <a href="index.html" class="flex items-center gap-3 no-underline">
   <img src="assets/logo.jpeg" alt="New Man Rising" class="h-12 w-12 object-contain rounded-full" style="mix-blend-mode:screen" width="48" height="48" />
   <span class="hidden md:block text-sm uppercase tracking-[0.35em] font-semibold text-on-surface opacity-80">New Man Rising</span>
@@ -70,9 +70,9 @@
 
   <main id="main-content" class="relative z-10">
     <!-- Page Hero -->
-    <section class="events-hero relative min-h-screen md:h-screen px-4 sm:px-5 md:px-16 pt-24 pb-8 md:pt-0 md:pb-0 flex flex-col items-center justify-center text-center overflow-hidden">
+    <section class="events-hero relative min-h-screen md:h-screen px-4 sm:px-5 md:px-16 pt-24 pb-8 md:pt-0 md:pb-0 flex flex-col items-center justify-center text-center overflow-hidden glow-gold">
       <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover" data-parallax="0.3" alt="Events Hero" src="assets/events_hero.png" />
+        <img class="w-full h-full object-cover" data-parallax="0.3" alt="Events Hero" src="assets/events_hero.png" loading="eager" decoding="async" fetchpriority="high" />
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
       </div>
@@ -99,7 +99,7 @@
       </div>
 
       <div class="reveal-fade">
-        <div class="glass-card overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+        <div class="glass-card overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)]">
           <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
             <img src="assets/launch-banner.png" alt="New Man Rising launch event banner" class="h-full min-h-[320px] w-full object-cover" />
             <div class="p-8 md:p-10 flex flex-col justify-between">
