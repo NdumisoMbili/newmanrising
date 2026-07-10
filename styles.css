@@ -188,17 +188,18 @@ body.page-home {
   width: 58px;
   height: 58px;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  color: #fff;
-  box-shadow: 0 16px 40px rgba(18, 140, 126, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #0b0b0b 0%, #161616 100%);
+  color: #f2ca50;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  border: 1px solid #f2ca50;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   text-decoration: none;
 }
 
 .whatsapp-float:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 20px 48px rgba(18, 140, 126, 0.42);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  border-color: #d8ae2d;
 }
 
 .whatsapp-float:focus-visible {
@@ -3055,10 +3056,26 @@ body.page-about .section-title-l2 {
 }
 
 @media (max-width: 640px) {
+  .home-partners-carousel {
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+  }
+
+  .home-partners-track {
+    gap: 0.75rem;
+  }
+
   .home-partner-card {
-    min-width: 150px;
-    height: 116px;
+    min-width: 132px;
+    width: min(160px, 42vw);
+    height: 104px;
     border-radius: 1rem;
+    padding: 0.85rem;
+  }
+
+  .home-partner-card img {
+    max-width: 86%;
+    max-height: 62%;
   }
 }
 
@@ -3184,13 +3201,35 @@ body.page-about .section-title-l2 {
   .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .partner-card { aspect-ratio: 4 / 3; padding: 1.1rem; }
   .partners-banner { padding: 2.5rem 1.5rem; border-radius: 1.5rem; }
-  .partners-banner .page-hero-title { align-items: flex-start; }
+  .partners-banner .page-hero-title {
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.15em;
+  }
+  .partners-banner .page-hero-outline,
+  .partners-banner .page-hero-gold {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .partners-banner .page-hero-outline { font-size: clamp(24px, 8vw, 40px); }
+  .partners-banner .page-hero-gold { font-size: clamp(28px, 9vw, 48px); }
+  .partners-tagline { font-size: clamp(15px, 4vw, 18px); }
 }
 
 @media (max-width: 480px) {
   .partners-grid { gap: 0.75rem; }
   .partner-card { border-radius: 1rem; padding: 0.9rem; }
-  .partners-hashtag { font-size: 10px; letter-spacing: 0.3em; }
+  .partners-hashtag {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    line-height: 1.6;
+  }
+  .partners-banner .page-hero-outline { font-size: clamp(22px, 9vw, 32px); }
+  .partners-banner .page-hero-gold { font-size: clamp(24px, 10vw, 36px); }
+  .partners-banner .page-hero-title { gap: 0.08em; }
+  .partners-tagline { max-width: 100%; }
 }
 
 /* ═══════════════════════════════════════════════════════
