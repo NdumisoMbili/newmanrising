@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   NEW MAN RISING — Full Design System
+   NEW MAN RISING - Full Design System
    Afro-futuristic Luxury · Dark + Gold · Cinematic
    ═══════════════════════════════════════════════════════════ */
 
@@ -255,7 +255,7 @@ h1, h2, h3 {
   will-change: transform;
 }
 
-/* Inner shimmer layer — always present, brightens on hover */
+/* Inner shimmer layer - always present, brightens on hover */
 .glass-card::before {
   content: '';
   position: absolute;
@@ -1042,7 +1042,7 @@ nav.nav-collapsed #nav-links {
     padding: 1.5rem !important;
   }
 
-  /* Always show descriptions — no hover on mobile */
+  /* Always show descriptions - no hover on mobile */
   .half-clock-card .opacity-0 {
     opacity: 1 !important;
     visibility: visible !important;
@@ -1500,7 +1500,7 @@ body.page-contact .ambient-orb-2 { opacity: 0.028; }
 .program-card-forge:hover::before { opacity: 1; }
 
 /* ═══════════════════════════════════════════
-   EVENTS — COUNTDOWN BADGE
+   EVENTS - COUNTDOWN BADGE
    ═══════════════════════════════════════════ */
 
 .event-countdown {
@@ -1519,7 +1519,7 @@ body.page-contact .ambient-orb-2 { opacity: 0.028; }
 }
 
 /* ═══════════════════════════════════════════
-   EVENTS — HORIZONTAL SCROLL
+   EVENTS - HORIZONTAL SCROLL
    ═══════════════════════════════════════════ */
 
 .events-hscroll-wrap { position: relative; }
@@ -1611,7 +1611,7 @@ body.page-contact .ambient-orb-2 { opacity: 0.028; }
 }
 
 /* ═══════════════════════════════════════════
-   VISIONARIES — ASYMMETRIC GRID
+   VISIONARIES - ASYMMETRIC GRID
    ═══════════════════════════════════════════ */
 
 .visionaries-grid {

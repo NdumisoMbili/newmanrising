@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// NEW MAN RISING — main.js
+// NEW MAN RISING - main.js
 // Premium UI/UX · Performance · Accessibility
 // ═══════════════════════════════════════════════════════════
 
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── Cinematic H1 Word Split ───────────────────────────────────────────────
   if (!prefersReducedMotion) {
     document.querySelectorAll('h1.reveal-slide-up').forEach(el => {
-      // Preserve existing HTML (spans, etc.) — only split plain text nodes
+      // Preserve existing HTML (spans, etc.) - only split plain text nodes
       if (el.children.length > 0) return; // skip already marked-up h1s
       const words = el.textContent.trim().split(/(\s+)/);
       el.innerHTML = words.map((w, i) => {
